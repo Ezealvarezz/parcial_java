@@ -15,25 +15,21 @@ public class CursoController {
         this.cursoRepository = cursoRepository;
     }
 
-    // Listar todos los cursos
     @GetMapping
     public List<Curso> listar() {
         return cursoRepository.findAll();
     }
 
-    // Crear un nuevo curso
     @PostMapping
     public Curso crear(@RequestBody Curso curso) {
         return cursoRepository.save(curso);
     }
 
-    // Obtener un curso por ID
     @GetMapping("/{id}")
     public Curso obtener(@PathVariable Long id) {
         return cursoRepository.findById(id).orElse(null);
     }
 
-    // Eliminar un curso por ID
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable Long id) {
         cursoRepository.deleteById(id);

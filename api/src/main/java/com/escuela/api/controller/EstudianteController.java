@@ -15,25 +15,21 @@ public class EstudianteController {
         this.estudianteRepository = estudianteRepository;
     }
 
-    // Listar todos los estudiantes
     @GetMapping
     public List<Estudiante> listar() {
         return estudianteRepository.findAll();
     }
 
-    // Crear un nuevo estudiante
     @PostMapping
     public Estudiante crear(@RequestBody Estudiante estudiante) {
         return estudianteRepository.save(estudiante);
     }
 
-    // Obtener un estudiante por ID
     @GetMapping("/{id}")
     public Estudiante obtener(@PathVariable Long id) {
         return estudianteRepository.findById(id).orElse(null);
     }
 
-    // Eliminar un estudiante por ID
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable Long id) {
         estudianteRepository.deleteById(id);
